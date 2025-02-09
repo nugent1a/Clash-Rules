@@ -2,10 +2,14 @@
 DOMAIN-KEYWORD,meimeiyun
 DOMAIN-KEYWORD,yfjc
 DOMAIN-KEYWORD,hongxingdl
-  
+
 #看片
 DOMAIN-KEYWORD,javdb
 DOMAIN-KEYWORD,bsky
+
+#ip检测
+DOMAIN-SUFFIX,ip.sb
+DOMAIN-KEYWORD,ipify
 
 #others
 DOMAIN-KEYWORD,cloudflare
