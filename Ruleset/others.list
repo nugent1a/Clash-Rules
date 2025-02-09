@@ -8,8 +8,8 @@ DOMAIN-KEYWORD,javdb
 DOMAIN-KEYWORD,bsky
 
 #ip检测
-DOMAIN-SUFFIX,ip.sb
-DOMAIN-KEYWORD,ipify
+DOMAIN-SUFFIX,ip.sb,🚀 节点选择
+DOMAIN-KEYWORD,ipify,🚀 节点选择
 
 #others
 DOMAIN-KEYWORD,cloudflare
