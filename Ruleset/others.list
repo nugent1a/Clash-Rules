@@ -1,6 +1,6 @@
 #梯子
 DOMAIN-KEYWORD,meimeiyun
-DOMAIN-KEYWORD,一分机场
+DOMAIN-KEYWORD,yfjc
 DOMAIN-KEYWORD,hongxingdl
   
 #看片
@@ -8,6 +8,7 @@ DOMAIN-KEYWORD,javdb
 DOMAIN-KEYWORD,bsky
 
 #others
+DOMAIN-SUFFIX,ipwho.is
 DOMAIN-KEYWORD,cloudflare
 DOMAIN-KEYWORD,speedtest
 #DOMAIN-KEYWORD,speed
@@ -17,6 +18,5 @@ DOMAIN-KEYWORD,browserscan
 DOMAIN-KEYWORD,wcode
 DOMAIN-KEYWORD,buliang
 DOMAIN-KEYWORD,rockstar
-DOMAIN-KEYWORD,ipwho
 DOMAIN-KEYWORD,mousegesturesapi
 DOMAIN-KEYWORD,adtidy
