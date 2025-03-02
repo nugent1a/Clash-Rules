@@ -3,6 +3,10 @@ DOMAIN-KEYWORD,meimeiyun
 DOMAIN-KEYWORD,yfjc
 DOMAIN-KEYWORD,hongxingdl
 
+#区块链
+DOMAIN-KEYWORD,binance
+DOMAIN-KEYWORD,bitget
+
 #看片
 DOMAIN-KEYWORD,javdb
 DOMAIN-KEYWORD,bsky
@@ -19,5 +23,5 @@ DOMAIN-KEYWORD,buliang
 DOMAIN-KEYWORD,rockstar
 DOMAIN-KEYWORD,mousegesturesapi
 DOMAIN-KEYWORD,adtidy
-DOMAIN-KEYWORD,binance
 DOMAIN-KEYWORD,dizhicha
+
