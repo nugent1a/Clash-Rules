@@ -16,5 +16,5 @@ DOMAIN-KEYWORD,rockstar
 DOMAIN-KEYWORD,mousegesturesapi
 DOMAIN-KEYWORD,adtidy
 DOMAIN-KEYWORD,dizhicha
-#HttpTTS
-DOMAIN-SUFFIX,platform.bing.com
+#bing
+DOMAIN-SUFFIX,bing.com
