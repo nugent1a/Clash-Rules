@@ -1,6 +1,6 @@
 proxy-providers:
-  ProviderAirPort:
-    url: "订阅"
+  ProxySubscription:
+    url: "订阅地址"
     type: http
     interval: 86400
     health-check:
@@ -26,15 +26,31 @@ geox-url:
 
 
 dns:
-    enable: true
-    ipv6: false
-    default-nameserver: [223.5.5.5, 119.29.29.29]
-    enhanced-mode: fake-ip
-    fake-ip-range: 198.18.0.1/16
-    use-hosts: true
-    nameserver: ['https://doh.pub/dns-query', 'https://dns.alidns.com/dns-query']
-    fallback: ['https://doh-pure.onedns.net/dns-query', 'https://ada.openbld.net/dns-query', 'https://223.5.5.5/dns-query', 'https://223.6.6.6/dns-query']
-    fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
+  enable: true
+  ipv6: true
+  enhanced-mode: redir-host
+  nameserver:
+    - 202.102.128.68
+    - 202.102.134.68
+    - https://120.53.53.53/dns-query
+
+  fallback:
+    - https://dns.cloudflare.com/dns-query
+    - https://dns.google/dns-query
+    - https://223.5.5.5/dns-query
+
+  fallback-filter:
+    geoip: true
+  proxy-server-nameserver:
+    - https://120.53.53.53/dns-query
+    - https://223.5.5.5/dns-query
+  direct-nameserver:
+    - 202.102.128.68
+    - 202.102.134.68
+  respect-rules: true
+  use-hosts: false
+  use-system-hosts: true
+
 proxy-groups:
 
   - name: 🔰 节点选择
@@ -178,49 +194,49 @@ rule-providers:
   copilot_domain:
     type: http
     interval: 86400
-    behavior: domain
+    behavior: classical
     format: text
     url: "https://raw.githubusercontent.com/nugent1a/Clash-Rules/refs/heads/main/Ruleset/Bing.list"
 #Crypto
   crypto_domain:
     type: http
     interval: 86400
-    behavior: domain
+    behavior: classical
     format: text
     url: "https://raw.githubusercontent.com/nugent1a/Clash-Rules/refs/heads/main/Ruleset/Crypto.list"
 #yellow
   yellow_domain:
     type: http
     interval: 86400
-    behavior: domain
+    behavior: classical
     format: text
     url: "https://raw.githubusercontent.com/nugent1a/Clash-Rules/refs/heads/main/Ruleset/yellow.list"
 #network_detection
   network_detection:
     type: http
     interval: 86400
-    behavior: domain
+    behavior: classical
     format: text
     url: "https://raw.githubusercontent.com/nugent1a/Clash-Rules/refs/heads/main/Ruleset/network_detection.list"
 #private
   private:
     type: http
     interval: 86400
-    behavior: domain
+    behavior: classical
     format: text
     url: "https://raw.githubusercontent.com/nugent1a/Clash-Rules/refs/heads/main/Ruleset/private.list"
 #微软服务
   microsoft_domain:
     type: http
     interval: 86400
-    behavior: domain
+    behavior: classical
     format: text
     url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list"
 #苹果服务
   apple:
     type: http
     interval: 86400
-    behavior: domain
+    behavior: classical
     format: text
     url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list"
 #节点选择
