@@ -1,11 +1,19 @@
 #Proxy
-+.meimeiyun.top
-+.hongxingdl.com
-+.hongxingyunmovie.vip
-+.banana01.win
+DOMAIN-KEYWORD,meimeiyun
+DOMAIN-KEYWORD,yfjc
+DOMAIN-KEYWORD,hongxingdl
+DOMAIN-KEYWORD,hongxingyunmovie
+DOMAIN-KEYWORD,banana0
 
 #others
-+.alertifyjs.com
-+.speedtest.net
-+.ipleak.net
-+.metacubex.one
+DOMAIN-KEYWORD,alertifyjs
+DOMAIN-KEYWORD,speedtest
+DOMAIN-KEYWORD,ipleak
+DOMAIN-KEYWORD,browserscan
+DOMAIN-KEYWORD,wcode
+DOMAIN-KEYWORD,buliang
+DOMAIN-KEYWORD,rockstar
+DOMAIN-KEYWORD,mousegesturesapi
+DOMAIN-KEYWORD,adtidy
+DOMAIN-KEYWORD,dizhicha
+DOMAIN-KEYWORD,metacubex
