@@ -7,7 +7,6 @@ DOMAIN-KEYWORD,banana0
 
 #others
 DOMAIN-KEYWORD,alertifyjs
-DOMAIN-KEYWORD,speedtest
 DOMAIN-KEYWORD,ipleak
 DOMAIN-KEYWORD,browserscan
 DOMAIN-KEYWORD,wcode
@@ -17,3 +16,4 @@ DOMAIN-KEYWORD,mousegesturesapi
 DOMAIN-KEYWORD,adtidy
 DOMAIN-KEYWORD,dizhicha
 DOMAIN-KEYWORD,metacubex
+DOMAIN-SUFFIX,speedtest.net
