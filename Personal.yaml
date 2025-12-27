@@ -4,10 +4,10 @@ NodeParam: &NodeParam {type: http, interval: 3600, health-check: {enable: true, 
 proxy-providers:
   Fusion:
     <<: *NodeParam
-    url: "https://www.nugent.cn:7445/nugent1a/download/collection/Private"
+    url: "订阅1"
   Guise:
     <<: *NodeParam
-    url: 'https://www.nugent.cn:7445/nugent1a/download/Guise' 
+    url: "订阅2"
 
 # 全局配置 
 mixed-port: 7890
@@ -182,10 +182,10 @@ proxy-groups:
 
 ### 规则集锚点
 RuleSet_classical_text: &RuleSet_classical_text {type: http, behavior: classical, interval: 43200, format: text}
-RuleSet_domain_mrs: &RuleSet_domain_mrs {type: http, behavior: domain, interval: 43200, format: mrs}
-RuleSet_domain_text: &RuleSet_domain_text {type: http, behavior: domain, interval: 43200, format: text}
-RuleSet_ipcidr_mrs: &RuleSet_ipcidr_mrs {type: http, behavior: ipcidr, interval: 43200, format: mrs}
-RuleSet_ipcidr_text: &RuleSet_ipcidr_text {type: http, behavior: ipcidr, interval: 43200, format: text}
+#RuleSet_domain_mrs: &RuleSet_domain_mrs {type: http, behavior: domain, interval: 43200, format: mrs}
+#RuleSet_domain_text: &RuleSet_domain_text {type: http, behavior: domain, interval: 43200, format: text}
+#RuleSet_ipcidr_mrs: &RuleSet_ipcidr_mrs {type: http, behavior: ipcidr, interval: 43200, format: mrs}
+#RuleSet_ipcidr_text: &RuleSet_ipcidr_text {type: http, behavior: ipcidr, interval: 43200, format: text}
 
 rule-providers:
 #自定义Provider
@@ -242,7 +242,7 @@ rules:
 
   # 最后的非国内 IP 兜底
   - GEOSITE,geolocation-!cn,🔰 节点选择
-#伪装
+
   - GEOSITE,douyin,🎭 伪装
   - GEOSITE,bilibili,🎭 伪装
   - GEOSITE,sina,🎭 伪装
