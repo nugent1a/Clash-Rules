@@ -1,3 +1,14 @@
+# NodeParam 锚点
+NodeParam: &NodeParam {type: http, interval: 3600, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 300}}
+
+proxy-providers:
+  Fusion:
+    <<: *NodeParam
+    url: "订阅"
+#  Guise:
+#   <<: *NodeParam
+#    url: 
+
 # 全局配置 
 mixed-port: 7890
 allow-lan: true
@@ -21,8 +32,6 @@ geo-update-interval: 12
 geox-url:
   geoip: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat
   geosite: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
-  mmdb: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb
-  asn: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb
 
 # 嗅探
 sniffer:
@@ -115,6 +124,8 @@ proxy-groups:
 
   - name:  🎭 伪装
     type: select
+    tolerance: 50
+    interval: 300
     proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换]
     use:
       - Guise
@@ -192,7 +203,7 @@ rule-providers:
 
 rules:
 #QUIC阻断
-  - AND,((NETWORK,UDP),(DST-PORT,443)),REJECT
+#  - AND,((NETWORK,UDP),(DST-PORT,443)),REJECT
 #避免 DNS 污染导致的误判
   - IP-CIDR,223.5.5.5/32,DIRECT,no-resolve
   - IP-CIDR,223.6.6.6/32,DIRECT,no-resolve
@@ -237,3 +248,21 @@ rules:
 
   # 最后的非国内 IP 兜底
   - GEOSITE,geolocation-!cn,🔰 节点选择
+
+  # 伪装
+  - GEOSITE,douyin,🎭 伪装
+  - GEOSITE,bilibili,🎭 伪装
+  - GEOSITE,sina,🎭 伪装
+  - GEOSITE,xiaohongshu,🎭 伪装
+  - GEOSITE,zhihu,🎭 伪装
+
+#直连
+  - GEOSITE,private,🎯 全球直连
+  - GEOIP,private,🎯 全球直连,no-resolve
+  # 中国大陆
+  - GEOSITE,CN,🎯 全球直连
+  - GEOIP,CN,🎯 全球直连,no-resolve
+  - GEOIP,lan,🎯 全球直连,no-resolve
+#兜底
+  - GEOIP,!CN,🔰 节点选择,no-resolve
+  - MATCH,🔀 回退路由
