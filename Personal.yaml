@@ -98,8 +98,6 @@ dns:
     - "+.qq.com"
     - "*.msftncsi.com"
     - "www.msftconnecttest.com"
-    - "+.nugent.cn"
-    - "+.econage.com"
 
 proxy-groups:
 
@@ -252,8 +250,6 @@ rules:
   - GEOSITE,sina,🎭 伪装
   - GEOSITE,xiaohongshu,🎭 伪装
   - GEOSITE,zhihu,🎭 伪装
-  # EasyConnect
-  - IP-CIDR,172.20.88.0/24,🎭 伪装,no-resolve
   # 直连
   - GEOSITE,private,🎯 全球直连
   - GEOIP,private,🎯 全球直连,no-resolve
