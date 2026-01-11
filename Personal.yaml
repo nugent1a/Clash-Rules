@@ -7,9 +7,9 @@ proxy-providers:
     url: "订阅"
 #  Guise:
 #   <<: *NodeParam
-#    url: 
+#    url: "订阅"
 
-# 全局配置 
+# 全局配置
 mixed-port: 7890
 allow-lan: true
 bind-address: "*"
@@ -24,7 +24,7 @@ profile:
   store-fake-ip: true
 global-client-fingerprint: chrome
 
-#GeoX
+# GeoX
 geodata-mode: true
 geodata-loader: standard
 geo-auto-update: true
@@ -95,8 +95,11 @@ dns:
     - "time.*.com"
     - "+.market.xiaomi.com"
     - "localhost.ptlogin2.qq.com"
+    - "+.qq.com"
     - "*.msftncsi.com"
     - "www.msftconnecttest.com"
+    - "+.nugent.cn"
+    - "+.econage.com"
 
 proxy-groups:
 
@@ -196,37 +199,35 @@ RuleSet_classical_text: &RuleSet_classical_text {type: http, behavior: classical
 #RuleSet_ipcidr_text: &RuleSet_ipcidr_text {type: http, behavior: ipcidr, interval: 43200, format: text}
 
 rule-providers:
-#自定义Provider
+  # 自定义Provider
   private:
     <<: *RuleSet_classical_text
     url: https://raw.githubusercontent.com/nugent1a/Clash-Rules/refs/heads/main/Ruleset/private.list
 
 rules:
-#QUIC阻断
-#  - AND,((NETWORK,UDP),(DST-PORT,443)),REJECT
-#避免 DNS 污染导致的误判
+  # 避免 DNS 污染导致的误判
   - IP-CIDR,223.5.5.5/32,DIRECT,no-resolve
   - IP-CIDR,223.6.6.6/32,DIRECT,no-resolve
-#节点选择_高优先级
+  # 节点选择_高优先级
   - RULE-SET,private,🔰 节点选择
   - GEOSITE,upai,🔰 节点选择
   - GEOSITE,ipip,🔰 节点选择
   - GEOSITE,github,🔰 节点选择
-#AI
+  # AI
   - GEOSITE,category-ai-chat-!cn,💡 AI
-#Crypto
+  # Crypto
   - GEOSITE,category-cryptocurrency,🪙 Crypto
-#18+
+  # 18+
   - GEOSITE,category-porn,🚀 手动切换
-#Google
+  # Google
   - GEOSITE,google,🍀 Google
   - GEOIP,google,🍀 Google,no-resolve
   - GEOSITE,youtube,🍀 Google
-#微软服务
+  # 微软服务
   - GEOSITE,microsoft,🪟 微软服务
-#苹果服务
+  # 苹果服务
   - GEOSITE,apple,🍎 苹果服务
-#节点选择
+  # 节点选择
   - GEOSITE,x,🔰 节点选择
   - GEOSITE,telegram,🔰 节点选择
   - GEOSITE,tiktok,🔰 节点选择
@@ -237,32 +238,29 @@ rules:
   - GEOSITE,disney,🔰 节点选择
   - GEOSITE,spotify,🔰 节点选择
   - GEOSITE,docker,🔰 节点选择
-
   # IP 辅助规则
   - GEOIP,twitter,🔰 节点选择,no-resolve
   - GEOIP,telegram,🔰 节点选择,no-resolve
   - GEOIP,netflix,🔰 节点选择,no-resolve
-
   # GFW 列表 (兜底大名单)
   - GEOSITE,gfw,🔰 节点选择
-
   # 最后的非国内 IP 兜底
   - GEOSITE,geolocation-!cn,🔰 节点选择
-
   # 伪装
   - GEOSITE,douyin,🎭 伪装
   - GEOSITE,bilibili,🎭 伪装
   - GEOSITE,sina,🎭 伪装
   - GEOSITE,xiaohongshu,🎭 伪装
   - GEOSITE,zhihu,🎭 伪装
-
-#直连
+  # EasyConnect
+  - IP-CIDR,172.20.88.0/24,🎭 伪装,no-resolve
+  # 直连
   - GEOSITE,private,🎯 全球直连
   - GEOIP,private,🎯 全球直连,no-resolve
   # 中国大陆
   - GEOSITE,CN,🎯 全球直连
   - GEOIP,CN,🎯 全球直连,no-resolve
   - GEOIP,lan,🎯 全球直连,no-resolve
-#兜底
+  # 兜底
   - GEOIP,!CN,🔰 节点选择,no-resolve
   - MATCH,🔀 回退路由
