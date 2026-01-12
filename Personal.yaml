@@ -17,7 +17,7 @@ unified-delay: true
 tcp-concurrent: true
 log-level: error
 ipv6: true
-keep-alive-idle: 600
+keep-alive-idle: 15
 keep-alive-interval: 15
 profile:
   store-selected: true
@@ -75,8 +75,12 @@ dns:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
   nameserver:
+    - 202.102.128.68
+    - 202.102.134.68
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
+    - https://dns.google/dns-query
+    - https://cloudflare-dns.com/dns-query
   nameserver-policy:
     "geosite:cn,private":
     #山东联通DNS
@@ -92,7 +96,6 @@ dns:
     - "*.arpa"
     - "time.*.com"
     - "ntp.*.com"
-    - "time.*.com"
     - "+.market.xiaomi.com"
     - "localhost.ptlogin2.qq.com"
     - "+.qq.com"
@@ -101,93 +104,107 @@ dns:
 
 proxy-groups:
 
-  - name: 🔰 节点选择
+  - name: 节点选择
     type: select
-    proxies: [DIRECT, 🚀 手动切换, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇺🇲 美国节点]
+    proxies: [DIRECT, 手动切换, 香港节点, 台湾节点, 新加坡节点, 日本节点, 欧洲节点, 美国节点]
+    icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png"
       
-  - name: 🚀 手动切换
+  - name: 手动切换
     type: select
     proxies: [DIRECT]
     use:
       - Fusion
+    icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available.png"
 
-  - name: 💡 AI
+  - name: AI
     type: select
-    proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇺🇲 美国节点]
+    proxies: [DIRECT, 节点选择, 手动切换, 香港节点, 台湾节点, 新加坡节点, 日本节点, 欧洲节点, 美国节点]
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/04ProxySoft/gemini(1).png"
 
-  - name: 🍀 Google
+  - name: Google
     type: select
-    proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇺🇲 美国节点]
+    proxies: [DIRECT, 节点选择, 手动切换, 香港节点, 台湾节点, 新加坡节点, 日本节点, 欧洲节点, 美国节点]
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/04ProxySoft/google(2).png"
 
-  - name: 🪙 Crypto
+  - name: Crypto
     type: select
-    proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇺🇲 美国节点]
+    proxies: [DIRECT, 节点选择, 手动切换, 香港节点, 台湾节点, 新加坡节点, 日本节点, 欧洲节点, 美国节点]
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/04ProxySoft/Bitcoin.png"
 
-  - name:  🎭 伪装
+  - name: 伪装
     type: select
-    tolerance: 50
     interval: 300
-    proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换]
+    proxies: [DIRECT, 节点选择, 手动切换]
     use:
       - Guise
+    icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Direct.png"
 
-  - name: 🪟 微软服务
+  - name: 微软服务
     type: select
-    proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇺🇲 美国节点]
+    proxies: [DIRECT, 节点选择, 手动切换, 香港节点, 台湾节点, 新加坡节点, 日本节点, 欧洲节点, 美国节点]
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/03CNSoft/microsoft.png"
 
-  - name: 🍎 苹果服务
+  - name: 苹果服务
     type: select
-    proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换, 🇭🇰 香港节点, 🇨🇳 台湾节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇺🇲 美国节点]
+    proxies: [DIRECT, 节点选择, 手动切换, 香港节点, 台湾节点, 新加坡节点, 日本节点, 欧洲节点, 美国节点]
+    icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png"
 
-  - name: 🎯 全球直连
+  - name: 全球直连
     type: select
-    proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换]
+    proxies: [DIRECT, 节点选择, 手动切换]
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/01Country/chinese.png"
 
-  - name: 🔀 回退路由
+  - name: 回退路由
     type: select
-    proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换]
+    proxies: [DIRECT, 节点选择, 手动切换]
+    icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bypass.png"
 
-  - name: 🇭🇰 香港节点
+  - name: 香港节点
     type: url-test
     include-all: true
     tolerance: 50
     interval: 300
     filter: "(港|HK|hk|Hong Kong|HongKong|hongkong)"
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/01Country/Hongkong(3).png"
 
-  - name: 🇨🇳 台湾节点
+  - name: 台湾节点
     type: url-test
     include-all: true
     tolerance: 50
     interval: 300
     filter: "(台|新北|彰化|TW|Taiwan)"
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/01Country/taiwan(4).png"
 
-  - name: 🇸🇬 新加坡节点
+  - name: 新加坡节点
     type: select
     include-all: true
-    tolerance: 50
     interval: 300
     filter: "^(?!.*(0\\.5倍率|0\\.5x|0\\.5倍|倍率0\\.5x)).*(新加坡|坡|狮城|SG|Singapore).*$"
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/01Country/singapore.png"
 
-  - name: 🇯🇵 日本节点
+  - name: 日本节点
     type: url-test
     include-all: true
     tolerance: 50
     interval: 300
     filter: "(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan)"
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/01Country/Japan(2).png"
 
-  - name: 🇪🇺 欧洲节点
+  - name: 欧洲节点
     type: url-test
     include-all: true
     tolerance: 50
     interval: 300
     filter: "(?i)(EU|德国|Germany|DE|法国|France|FR|英国|UK|荷兰|Netherlands|NL|西班牙|Spain|瑞士|Switzerland|瑞典|Sweden|希腊|Greece|俄罗斯|Russia|RU|莫斯科|Moscow|土耳其|Turkey)"
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/01Country/EuropeanUnion(2).png"
 
-  - name: 🇺🇲 美国节点
+  - name: 美国节点
     type: url-test
     include-all: true
     tolerance: 150
     interval: 300
     filter: "(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)"
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/01Country/US(2).png"
 
 ### 规则集锚点
 RuleSet_classical_text: &RuleSet_classical_text {type: http, behavior: classical, interval: 43200, format: text}
@@ -207,56 +224,56 @@ rules:
   - IP-CIDR,223.5.5.5/32,DIRECT,no-resolve
   - IP-CIDR,223.6.6.6/32,DIRECT,no-resolve
   # 节点选择_高优先级
-  - RULE-SET,private,🔰 节点选择
-  - GEOSITE,upai,🔰 节点选择
-  - GEOSITE,ipip,🔰 节点选择
-  - GEOSITE,github,🔰 节点选择
+  - RULE-SET,private,节点选择
+  - GEOSITE,upai,节点选择
+  - GEOSITE,ipip,节点选择
+  - GEOSITE,github,节点选择
   # AI
-  - GEOSITE,category-ai-chat-!cn,💡 AI
+  - GEOSITE,category-ai-chat-!cn,AI
   # Crypto
-  - GEOSITE,category-cryptocurrency,🪙 Crypto
+  - GEOSITE,category-cryptocurrency,Crypto
   # 18+
-  - GEOSITE,category-porn,🚀 手动切换
+  - GEOSITE,category-porn,手动切换
   # Google
-  - GEOSITE,google,🍀 Google
-  - GEOIP,google,🍀 Google,no-resolve
-  - GEOSITE,youtube,🍀 Google
+  - GEOSITE,google,Google
+  - GEOIP,google,Google,no-resolve
+  - GEOSITE,youtube,Google
   # 微软服务
-  - GEOSITE,microsoft,🪟 微软服务
+  - GEOSITE,microsoft,微软服务
   # 苹果服务
-  - GEOSITE,apple,🍎 苹果服务
+  - GEOSITE,apple,苹果服务
   # 节点选择
-  - GEOSITE,x,🔰 节点选择
-  - GEOSITE,telegram,🔰 节点选择
-  - GEOSITE,tiktok,🔰 节点选择
-  - GEOSITE,facebook,🔰 节点选择
-  - GEOSITE,reddit,🔰 节点选择
-  - GEOSITE,discord,🔰 节点选择
-  - GEOSITE,netflix,🔰 节点选择
-  - GEOSITE,disney,🔰 节点选择
-  - GEOSITE,spotify,🔰 节点选择
-  - GEOSITE,docker,🔰 节点选择
+  - GEOSITE,x,节点选择
+  - GEOSITE,telegram,节点选择
+  - GEOSITE,tiktok,节点选择
+  - GEOSITE,facebook,节点选择
+  - GEOSITE,reddit,节点选择
+  - GEOSITE,discord,节点选择
+  - GEOSITE,netflix,节点选择
+  - GEOSITE,disney,节点选择
+  - GEOSITE,spotify,节点选择
+  - GEOSITE,docker,节点选择
   # IP 辅助规则
-  - GEOIP,twitter,🔰 节点选择,no-resolve
-  - GEOIP,telegram,🔰 节点选择,no-resolve
-  - GEOIP,netflix,🔰 节点选择,no-resolve
+  - GEOIP,twitter,节点选择,no-resolve
+  - GEOIP,telegram,节点选择,no-resolve
+  - GEOIP,netflix,节点选择,no-resolve
   # GFW 列表 (兜底大名单)
-  - GEOSITE,gfw,🔰 节点选择
+  - GEOSITE,gfw,节点选择
   # 最后的非国内 IP 兜底
-  - GEOSITE,geolocation-!cn,🔰 节点选择
+  - GEOSITE,geolocation-!cn,节点选择
   # 伪装
-  - GEOSITE,douyin,🎭 伪装
-  - GEOSITE,bilibili,🎭 伪装
-  - GEOSITE,sina,🎭 伪装
-  - GEOSITE,xiaohongshu,🎭 伪装
-  - GEOSITE,zhihu,🎭 伪装
+  - GEOSITE,douyin,伪装
+  - GEOSITE,bilibili,伪装
+  - GEOSITE,sina,伪装
+  - GEOSITE,xiaohongshu,伪装
+  - GEOSITE,zhihu,伪装
   # 直连
-  - GEOSITE,private,🎯 全球直连
-  - GEOIP,private,🎯 全球直连,no-resolve
+  - GEOSITE,private,全球直连
+  - GEOIP,private,全球直连,no-resolve
   # 中国大陆
-  - GEOSITE,CN,🎯 全球直连
-  - GEOIP,CN,🎯 全球直连,no-resolve
-  - GEOIP,lan,🎯 全球直连,no-resolve
+  - GEOSITE,CN,全球直连
+  - GEOIP,CN,全球直连,no-resolve
+  - GEOIP,lan,全球直连,no-resolve
   # 兜底
-  - GEOIP,!CN,🔰 节点选择,no-resolve
-  - MATCH,🔀 回退路由
+  - GEOIP,!CN,节点选择,no-resolve
+  - MATCH,回退路由
