@@ -5,9 +5,9 @@ proxy-providers:
   Fusion:
     <<: *NodeParam
     url: "订阅"
-#  Guise:
-#   <<: *NodeParam
-#    url: "订阅"
+  Guise:
+   <<: *NodeParam
+    url: "订阅"
 
 # 全局配置
 mixed-port: 7890
