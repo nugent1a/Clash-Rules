@@ -33,7 +33,7 @@ profile:
   store-fake-ip: true
 find-process-mode: strict
 # ui
-external-controller: 0.0.0.0:29090
+external-controller: 0.0.0.0:19090
 external-ui: ui
 external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
 external-controller-cors:
@@ -41,8 +41,17 @@ external-controller-cors:
     - '*'
   allow-private-network: true
 
+#NTP时间同步
+ntp:
+  enable: true
+  #写入系统（管理员）
+  write-to-system: true
+  server: ntp.ntsc.ac.cn
+  port: 123
+  interval: 30
+
 # GeoX
-geodata-mode: false
+geodata-mode: true
 geodata-loader: standard
 geo-auto-update: true
 geo-update-interval: 12
@@ -104,10 +113,7 @@ dns:
   fake-ip-filter:
     - GEOSITE,private,real-ip
     - DOMAIN-KEYWORD,econage,real-ip
-    - GEOSITE,microsoft,fake-ip
-    - GEOSITE,apple,fake-ip
-    - GEOSITE,google,fake-ip
-    - GEOSITE,steam,fake-ip
+    - GEOSITE,connectivity-check,real-ip
     - GEOSITE,cn,real-ip
     - MATCH,fake-ip
 
@@ -119,37 +125,28 @@ proxy-groups:
       
   - name: 🚀 手动切换
     type: select
+    interval: 300
     proxies: [DIRECT]
     use:
       - Fusion
 
-  - name: 💡 AI
-    type: select
-    proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换, 🇭🇰 香港, 🇨🇳 台湾, 🇸🇬 新加坡, 🇯🇵 日本, 🇪🇺 欧洲, 🇺🇲 美国]
-
-  - name: 🔍 Google
-    type: select
-    proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换, 🇭🇰 香港, 🇨🇳 台湾, 🇸🇬 新加坡, 🇯🇵 日本, 🇪🇺 欧洲, 🇺🇲 美国]
-
-  - name: 🪙 Crypto
-    type: select
-    proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换, 🇭🇰 香港, 🇨🇳 台湾, 🇸🇬 新加坡, 🇯🇵 日本, 🇪🇺 欧洲, 🇺🇲 美国]
-
-  - name:  🎭 伪装
-    type: select
-    tolerance: 50
-    interval: 300
-    proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换]
-    use:
-      - Guise
-
   - name: 🪟 微软服务
     type: select
     proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换, 🇭🇰 香港, 🇨🇳 台湾, 🇸🇬 新加坡, 🇯🇵 日本, 🇪🇺 欧洲, 🇺🇲 美国]
-
+    
   - name: 🍎 苹果服务
     type: select
     proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换, 🇭🇰 香港, 🇨🇳 台湾, 🇸🇬 新加坡, 🇯🇵 日本, 🇪🇺 欧洲, 🇺🇲 美国]
+
+  - name: 🎬 影视服务
+    type: select
+    proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换, 🇭🇰 香港, 🇨🇳 台湾, 🇸🇬 新加坡, 🇯🇵 日本, 🇪🇺 欧洲, 🇺🇲 美国]
+
+  - name: 🎭 伪装
+    type: select
+    proxies: [DIRECT, 🔰 节点选择, 🚀 手动切换]
+    use:
+      - Guise
 
   - name: 🎯 全球直连
     type: select
@@ -176,7 +173,7 @@ proxy-groups:
     type: select
     include-all: true
     interval: 300
-    filter: "^(?!.*(0\\.5倍率|0\\.5x|0\\.5倍|倍率0\\.5x)).*(新加坡|坡|狮城|SG|Singapore).*$"
+    filter: "(新加坡|坡|狮城|SG|Singapore)"
 
   - name: 🇯🇵 日本
     type: url-test
@@ -211,28 +208,29 @@ rule-providers:
   custom:
     <<: *RuleSet_classical_text
     url: https://raw.githubusercontent.com/nugent1a/Clash-Rules/refs/heads/main/Ruleset/custom.list
+  media:
+    <<: *RuleSet_classical_text
+    url: https://raw.githubusercontent.com/nugent1a/Clash-Rules/refs/heads/main/Ruleset/media.list
 
 rules:
-  # 避免 DNS 污染导致的误判
-  - IP-CIDR,223.5.5.5/32,DIRECT,no-resolve
-  - IP-CIDR,223.6.6.6/32,DIRECT,no-resolve
-  # EasyConnect
-  - IP-CIDR,172.20.88.0/24,🎭 伪装,no-resolve
   # 节点选择_高优先级
   - RULE-SET,custom,🔰 节点选择
   - GEOSITE,speedtest,🔰 节点选择
   - GEOSITE,upai,🔰 节点选择
   - GEOSITE,ipip,🔰 节点选择
   - GEOSITE,github,🔰 节点选择
+  - GEOSITE,paypal,🔰 节点选择
   # AI
-  - GEOSITE,category-ai-chat-!cn,💡 AI
-  # Crypto
-  - GEOSITE,category-cryptocurrency,🪙 Crypto
-  # 18+
-  - GEOSITE,category-porn,🚀 手动切换
+  - GEOSITE,category-ai-chat-!cn,🔰 节点选择
   # Google
-  - GEOSITE,google,🔍 Google
-  - GEOSITE,youtube,🔍 Google
+  - GEOSITE,google,🔰 节点选择
+  - GEOSITE,youtube,🔰 节点选择
+  # Crypto
+  - GEOSITE,category-cryptocurrency,🇨🇳 台湾
+  # 18+
+  - GEOSITE,category-porn,🎬 影视服务
+  # media
+  - RULE-SET,media,🎬 影视服务
   # 微软服务
   - GEOSITE,microsoft,🪟 微软服务
   # 苹果服务
@@ -245,8 +243,9 @@ rules:
   - GEOIP,twitter,🔰 节点选择,no-resolve
   - GEOIP,telegram,🔰 节点选择,no-resolve
   - GEOIP,netflix,🔰 节点选择,no-resolve
-  - GEOIP,google,🔍 Google,no-resolve
-  - GEOIP,!CN,🔰 节点选择,no-resolve
+  - GEOIP,google,🔰 节点选择,no-resolve
+  # EasyConnect
+  - IP-CIDR,172.20.88.0/24,🎭 伪装,no-resolve
   # 伪装
   - GEOSITE,douyin,🎭 伪装
   - GEOSITE,bilibili,🎭 伪装
