@@ -35,17 +35,16 @@ find-process-mode: strict
 # ui
 external-controller: 0.0.0.0:19090
 external-ui: ui
-external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
+external-ui-url: https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip
 external-controller-cors:
   allow-origins:
     - '*'
   allow-private-network: true
 
-#NTP时间同步
 ntp:
   enable: true
   #写入系统（管理员）
-  write-to-system: true
+  write-to-system: false
   server: ntp.ntsc.ac.cn
   port: 123
   interval: 30
@@ -56,10 +55,10 @@ geodata-loader: standard
 geo-auto-update: true
 geo-update-interval: 12
 geox-url:
-  geoip: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
-  geosite: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
-  mmdb: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
-  asn: "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
+  geoip: https://fastly.jsdelivr.net/gh/appshubcc/bett-rules@release/geoip.dat
+  geosite: https://fastly.jsdelivr.net/gh/appshubcc/bett-rules@release/geosite.dat
+  mmdb: https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-City.mmdb
+  asn: https://fastly.jsdelivr.net/gh/appshubcc/bett-rules@release/GeoLite2-ASN.mmdb
 
 # 入站
 tun:
@@ -103,8 +102,8 @@ dns:
     - system
     - 223.5.5.5
   proxy-server-nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
+    - system
+    - 223.5.5.5
   nameserver:
     - system
     - 223.5.5.5
@@ -112,7 +111,6 @@ dns:
   fake-ip-filter-mode: rule
   fake-ip-filter:
     - GEOSITE,private,real-ip
-    - DOMAIN-KEYWORD,econage,real-ip
     - GEOSITE,connectivity-check,real-ip
     - GEOSITE,cn,real-ip
     - MATCH,fake-ip
@@ -126,6 +124,7 @@ proxy-groups:
   - name: 🚀 手动切换
     type: select
     interval: 300
+    url: 'https://www.gstatic.com/generate_204'
     proxies: [DIRECT]
     use:
       - Fusion
@@ -187,7 +186,7 @@ proxy-groups:
     include-all: true
     tolerance: 50
     interval: 300
-    filter: "(?i)(EU|德国|Germany|DE|法国|France|FR|英国|UK|荷兰|Netherlands|NL|西班牙|Spain|瑞士|Switzerland|瑞典|Sweden|希腊|Greece|俄罗斯|Russia|RU|莫斯科|Moscow|土耳其|Turkey)"
+    filter: "(?i)(EU|德国|Germany|DE|法国|France|英国|UK|荷兰|Netherlands|NL|西班牙|Spain|瑞士|Switzerland|瑞典|Sweden|希腊|Greece|俄罗斯|Russia|RU|莫斯科|Moscow|土耳其|Turkey)"
 
   - name: 🇺🇲 美国
     type: url-test
@@ -214,17 +213,16 @@ rule-providers:
 
 rules:
   # 节点选择_高优先级
-  - RULE-SET,custom,🔰 节点选择
   - GEOSITE,speedtest,🔰 节点选择
   - GEOSITE,upai,🔰 节点选择
   - GEOSITE,ipip,🔰 节点选择
   - GEOSITE,github,🔰 节点选择
   - GEOSITE,paypal,🔰 节点选择
-  # AI
-  - GEOSITE,category-ai-chat-!cn,🔰 节点选择
+  - GEOSITE,tiktok,🔰 节点选择
   # Google
   - GEOSITE,google,🔰 节点选择
-  - GEOSITE,youtube,🔰 节点选择
+  # AI
+  - GEOSITE,category-ai-chat-!cn,🔰 节点选择
   # Crypto
   - GEOSITE,category-cryptocurrency,🇨🇳 台湾
   # 18+
@@ -235,19 +233,20 @@ rules:
   - GEOSITE,microsoft,🪟 微软服务
   # 苹果服务
   - GEOSITE,apple,🍎 苹果服务
+  # 自行维护补充
+  - RULE-SET,custom,🔰 节点选择
   # GFW 列表 (兜底大名单)
   - GEOSITE,gfw,🔰 节点选择
   # 最后的非国内域名兜底
   - GEOSITE,geolocation-!cn,🔰 节点选择
   # IP 辅助规则
+  - GEOIP,tiktok,🔰 节点选择,no-resolve
   - GEOIP,twitter,🔰 节点选择,no-resolve
   - GEOIP,telegram,🔰 节点选择,no-resolve
   - GEOIP,netflix,🔰 节点选择,no-resolve
   - GEOIP,google,🔰 节点选择,no-resolve
-  # EasyConnect
-  - IP-CIDR,172.20.88.0/24,🎭 伪装,no-resolve
   # 伪装
-  - GEOSITE,douyin,🎭 伪装
+  - GEOSITE,bytedance,🎭 伪装
   - GEOSITE,bilibili,🎭 伪装
   - GEOSITE,sina,🎭 伪装
   - GEOSITE,xiaohongshu,🎭 伪装
