@@ -1,14 +1,16 @@
 #Proxy
-DOMAIN-KEYWORD,banana0
-DOMAIN-KEYWORD,rrabits
+# 霉霉
 DOMAIN-KEYWORD,meimeiyun
 DOMAIN-KEYWORD,biubiusub
+# 红杏
 DOMAIN-KEYWORD,hongxingdl
 DOMAIN-KEYWORD,hongxingyun
+# NIVA
 DOMAIN-SUFFIX,niva.fyi
 DOMAIN-SUFFIX,mizuku.net
-DOMAIN-SUFFIX,170809.xyz
+# 良心云
 DOMAIN-SUFFIX,liangxin.xyz
+# 雪山（送Emby）
 DOMAIN-SUFFIX,xueshan.shop
 DOMAIN-SUFFIX,xueshanlink.com
 
